@@ -126,11 +126,11 @@ class FakeHttpClient {
   }
 }
 
-final FakeHttpClientProvider = Provider((ref) => FakeHttpClient());
+final fakeHttpClientProvider = Provider((ref) => FakeHttpClient());
 //Future family is for non-constant values.
 //AutoDispose will reduce chances of memory leaks.
 final responseProvider = FutureProvider.autoDispose.family<String, String>((ref, url) async {
-  final httpClient = ref.read(FakeHttpClientProvider);
+  final httpClient = ref.read(fakeHttpClientProvider);
   return httpClient.get(url);
 });
 
